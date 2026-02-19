@@ -1,0 +1,12 @@
+/* src/assets/css/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Any global custom styles */
+body {
+  font-family: Arial, sans-serif; /* Example font */
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5; /* Light gray background matching Figma */
+}

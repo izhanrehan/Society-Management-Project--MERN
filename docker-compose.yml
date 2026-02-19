@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: ./server
+    ports:
+      - "5050:5050"
+    environment:
+      - MONGO_URI=mongodb+srv://laibarafiq:laiba22@cluster0.fy0o5ps.mongodb.net/societyManagement
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./client
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
