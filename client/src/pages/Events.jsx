@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 
 const Events = () => {
   const location = useLocation();
@@ -10,8 +11,6 @@ const Events = () => {
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('upcoming');
   const [searchTerm, setSearchTerm] = useState('');
-
-  const API_BASE_URL = 'http://localhost:5050/api';
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);

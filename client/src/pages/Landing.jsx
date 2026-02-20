@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'; // Import axios for API calls
+import API_BASE_URL from '../config/api';
 
 const Landing = () => {
     const [upcomingEvents, setUpcomingEvents] = useState([]);
@@ -15,9 +16,6 @@ const Landing = () => {
     const [errorUpcoming, setErrorUpcoming] = useState(null);
     const [errorPast, setErrorPast] = useState(null);
     const [errorSocieties, setErrorSocieties] = useState(null);
-
-    // Base URL for your API, ensure this matches your backend setup
-    const API_BASE_URL = 'http://localhost:5050/api';
 
     // --- Fetch Upcoming Events ---
     useEffect(() => {
@@ -177,7 +175,7 @@ const Landing = () => {
                                         <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors duration-200">{event.name}</h3>
                                         {organizerName && (
                                             <p className="text-gray-700 text-sm mb-1">
-                                                <span className="font-semibold">Organized by: {organizerName}</span>
+                                                <span className="font-semibold">Organized by: {event.organizer.name}</span>
                                             </p>
                                         )}
                                         <p className="text-gray-700 text-sm mb-1">
