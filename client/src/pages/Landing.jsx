@@ -159,34 +159,39 @@ const Landing = () => {
                         <p className="text-center text-red-600 text-lg">{errorUpcoming}</p>
                     ) : upcomingEvents.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-                            {upcomingEvents.map(event => (
+                            {upcomingEvents.map(event => {
+                                const imageSrc = event.banner_image || event.imageUrl || (event.images && event.images[0]) || 'https://via.placeholder.com/400x200?text=Event+Image';
+                                const venue = event.venue || event.location || 'Location TBA';
+                                const dt = event.date_time || event.date;
+                                const organizerName = typeof event.organizer === 'object' ? event.organizer?.name : null;
+                                return (
                                 <Link to={`/event-detail/${event._id}`} key={event._id} className="block bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden group">
                                     <div className="h-48 w-full overflow-hidden">
                                         <img
-                                            src={event.imageUrl || 'https://via.placeholder.com/400x200?text=Event+Image'}
+                                            src={imageSrc}
                                             alt={event.name}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                         />
                                     </div>
                                     <div className="p-5">
                                         <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors duration-200">{event.name}</h3>
-                                        {event.organizer && event.organizer.name && (
+                                        {organizerName && (
                                             <p className="text-gray-700 text-sm mb-1">
-                                                <span className="font-semibold">Organized by: {event.organizer.name}</span>
+                                                <span className="font-semibold">Organized by: {organizerName}</span>
                                             </p>
                                         )}
                                         <p className="text-gray-700 text-sm mb-1">
-                                            <span className="font-semibold">📍 {event.location || 'Location TBA'}</span>
+                                            <span className="font-semibold">📍 {venue}</span>
                                         </p>
                                         <p className="text-gray-600 text-sm">
-                                            <span className="font-semibold">🗓️ {new Date(event.date).toLocaleDateString()}</span>
+                                            <span className="font-semibold">🗓️ {dt ? new Date(dt).toLocaleDateString() : 'Date TBA'}</span>
                                         </p>
                                         <button className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200">
                                             Learn More <span className="ml-1 text-lg group-hover:translate-x-1 transition-transform duration-200">&rarr;</span>
                                         </button>
                                     </div>
                                 </Link>
-                            ))}
+                            );})}
                         </div>
                     ) : (
                         <p className="text-center text-gray-600 text-lg py-4">No upcoming events to display.</p>
@@ -212,15 +217,17 @@ const Landing = () => {
                         <p className="text-center text-red-400 text-lg">{errorSocieties}</p>
                     ) : societies.length > 0 ? (
                         <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
-                            {societies.map((society, i) => (
+                            {societies.map((society, i) => {
+                                const logoSrc = society.logo || society.logoUrl || `https://via.placeholder.com/150x150?text=${society.name ? society.name.charAt(0).toUpperCase() : 'S'}`;
+                                return (
                                 <Link to={`/society-detail/${society._id}`} key={society._id} className="block">
                                     <img
-                                        src={society.logoUrl || `https://via.placeholder.com/150x150?text=${society.name ? society.name.charAt(0).toUpperCase() : 'S'}`}
+                                        src={logoSrc}
                                         alt={`${society.name || 'Society'} Logo`}
                                         className="h-20 sm:h-24 object-contain bg-white rounded-lg p-3 shadow-xl transform hover:scale-105 transition-transform duration-300 cursor-pointer"
                                     />
                                 </Link>
-                            ))}
+                            );})}
                         </div>
                     ) : (
                         <p className="text-center text-gray-400 text-lg py-4">No societies to display.</p>
@@ -243,34 +250,39 @@ const Landing = () => {
                         <p className="text-center text-red-600 text-lg">{errorPast}</p>
                     ) : pastEvents.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-                            {pastEvents.map(event => (
+                            {pastEvents.map(event => {
+                                const imageSrc = event.banner_image || event.imageUrl || (event.images && event.images[0]) || 'https://via.placeholder.com/400x200?text=Past+Event+Image';
+                                const venue = event.venue || event.location || 'Location TBA';
+                                const dt = event.date_time || event.date;
+                                const organizerName = typeof event.organizer === 'object' ? event.organizer?.name : null;
+                                return (
                                 <Link to={`/event-detail/${event._id}`} key={event._id} className="block bg-gray-50 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 overflow-hidden group">
                                     <div className="h-40 w-full overflow-hidden">
                                         <img
-                                            src={event.imageUrl || 'https://via.placeholder.com/400x200?text=Past+Event+Image'}
+                                            src={imageSrc}
                                             alt={event.name}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                         />
                                     </div>
                                     <div className="p-4">
                                         <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-700 transition-colors duration-200">{event.name}</h3>
-                                        {event.organizer && event.organizer.name && (
+                                        {organizerName && (
                                             <p className="text-gray-700 text-sm mb-1">
-                                                <span className="font-semibold">Organized by: {event.organizer.name}</span>
+                                                <span className="font-semibold">Organized by: {organizerName}</span>
                                             </p>
                                         )}
                                         <p className="text-gray-700 text-sm mb-1">
-                                            <span className="font-semibold">📍 {event.location || 'Location TBA'}</span>
+                                            <span className="font-semibold">📍 {venue}</span>
                                         </p>
                                         <p className="text-gray-600 text-xs">
-                                            <span className="font-semibold">🗓️ {new Date(event.date).toLocaleDateString()}</span>
+                                            <span className="font-semibold">🗓️ {dt ? new Date(dt).toLocaleDateString() : 'Date TBA'}</span>
                                         </p>
                                         <button className="mt-3 inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-semibold transition-colors duration-200">
                                             View Details <span className="ml-1 text-base group-hover:translate-x-1 transition-transform duration-200">&rarr;</span>
                                         </button>
                                     </div>
                                 </Link>
-                            ))}
+                            );})}
                         </div>
                     ) : (
                         <p className="text-center text-gray-600 text-lg py-4">No ended events to display.</p>
