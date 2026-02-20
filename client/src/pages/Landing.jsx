@@ -35,7 +35,7 @@ const Landing = () => {
             }
         };
         fetchUpcomingEvents();
-    }, [API_BASE_URL]);
+    }, []);
 
     // --- Fetch Ended Events ---
     useEffect(() => {
@@ -55,7 +55,7 @@ const Landing = () => {
             }
         };
         fetchPastEvents();
-    }, [API_BASE_URL]);
+    }, []);
 
     // --- Fetch Societies for Logos ---
     useEffect(() => {
@@ -75,7 +75,7 @@ const Landing = () => {
             }
         };
         fetchSocieties();
-    }, [API_BASE_URL]);
+    }, []);
 
 
     return (

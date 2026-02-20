@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
+import API_BASE_URL from '../../config/api';
 
 const getCurrentSocietyId = () => {
     return '684d8d423127bff09b6e9f14'; // replace with actual dynamic society ID if needed
@@ -18,7 +19,6 @@ const ManageEvents = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const API_BASE_URL = 'http://localhost:5050/api';
     const societyId = getCurrentSocietyId();
 
     useEffect(() => {

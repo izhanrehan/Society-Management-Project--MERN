@@ -25,7 +25,7 @@ const EventDetail = () => {
             }
         };
         fetchEventDetail();
-    }, [id, API_BASE_URL]);
+    }, [id]);
 
     if (loading) {
         return <div className="text-center py-20">Loading event details...</div>;

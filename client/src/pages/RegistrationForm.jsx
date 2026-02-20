@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config/api';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,6 @@ const RegistrationForm = () => {
   const [message, setMessage] = useState('');
   const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
-  const API_BASE_URL = 'http://localhost:5050/api';
 
   const handleChange = (e) => {
     const { name, value } = e.target;

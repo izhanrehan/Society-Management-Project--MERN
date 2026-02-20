@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios'; 
+import API_BASE_URL from '../config/api';
 const Societies = () => {
     const [societies, setSocieties] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
-    const API_BASE_URL = 'http://localhost:5050/api';
 
     useEffect(() => {
         const fetchSocieties = async () => {
@@ -109,9 +109,9 @@ const Societies = () => {
             <footer className="bg-gray-950 text-gray-300 py-8 px-8 sm:px-16 lg:px-24 text-center text-sm mt-12">
                 <p>&copy; {new Date().getFullYear()} SocietyConnect. All rights reserved.</p>
                 <div className="flex justify-center space-x-6 mt-4">
-                    <a href="#" className="hover:text-white transition-colors duration-200">Privacy Policy</a>
-                    <a href="#" className="hover:text-white transition-colors duration-200">Terms of Service</a>
-                    <a href="#" className="hover:text-white transition-colors duration-200">Contact Us</a>
+                    <Link to="/privacy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link>
+                    <Link to="/terms" className="hover:text-white transition-colors duration-200">Terms of Service</Link>
+                    <Link to="/contact" className="hover:text-white transition-colors duration-200">Contact Us</Link>
                 </div>
             </footer>
         </div>

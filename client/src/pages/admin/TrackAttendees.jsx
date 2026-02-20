@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
+import API_BASE_URL from '../../config/api';
 
 const TrackAttendees = () => {
   const [attendees, setAttendees] = useState([]);
@@ -11,8 +12,6 @@ const TrackAttendees = () => {
   const [filterByAttendance, setFilterByAttendance] = useState('all');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const API_BASE_URL = 'http://localhost:5050/api';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +37,7 @@ const TrackAttendees = () => {
 
   const toggleAttendance = async (attendeeId, currentStatus) => {
     try {
-      const res = await axios.patch(
+      await axios.patch(
         `${API_BASE_URL}/registrations/mark-attendance/${attendeeId}`,
         { attended: !currentStatus },
         { withCredentials: true }

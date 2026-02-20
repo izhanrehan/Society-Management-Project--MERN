@@ -84,9 +84,12 @@ const Login = () => {
                                 <span className="ml-2">Remember me</span>
                             </label>
                             {/* For a real app, replace href="#" with a proper routing link or modal */}
-                            <a href="#" className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+                            <button
+                                type="button"
+                                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                            >
                                 Forgot Password?
-                            </a>
+                            </button>
                         </div>
                     </div>
                     {error && (

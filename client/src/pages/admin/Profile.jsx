@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
-
-const API_BASE_URL = 'http://localhost:5050/api';
+import API_BASE_URL from '../../config/api';
 
 const Profile = () => {
     const loggedInSocietyId = '684d8d423127bff09b6e9f14';
@@ -202,9 +201,9 @@ const Profile = () => {
                 <footer className="bg-gray-950 text-gray-300 py-8 px-8 sm:px-16 lg:px-24 text-center text-sm mt-12">
                     <p>&copy; {new Date().getFullYear()} SociNexus. All rights reserved.</p>
                     <div className="flex justify-center space-x-6 mt-4">
-                        <a href="#" className="hover:text-white transition-colors duration-200">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors duration-200">Terms of Service</a>
-                        <a href="#" className="hover:text-white transition-colors duration-200">Contact Us</a>
+                        <Link to="/privacy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link>
+                        <Link to="/terms" className="hover:text-white transition-colors duration-200">Terms of Service</Link>
+                        <Link to="/contact" className="hover:text-white transition-colors duration-200">Contact Us</Link>
                     </div>
                 </footer>
             </div>

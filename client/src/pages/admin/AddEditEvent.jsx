@@ -4,8 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
-
-const API_BASE_URL = 'http://localhost:5050/api';
+import API_BASE_URL from '../../config/api';
 
 const AddEditEvent = () => {
     const { id } = useParams();
@@ -91,12 +90,11 @@ const AddEditEvent = () => {
         setIsError(false);
 
         try {
-            let response;
             if (isEditing) {
-                response = await axios.put(`${API_BASE_URL}/events/${id}`, formData);
+                await axios.put(`${API_BASE_URL}/events/${id}`, formData);
                 setMessage('Event updated successfully!');
             } else {
-                response = await axios.post(`${API_BASE_URL}/events/`, formData);
+                await axios.post(`${API_BASE_URL}/events/`, formData);
                 setMessage('Event created successfully!');
                 setFormData({
                     name: '', description: '', date_time: '', venue: '', organizer: '', status: 'upcoming',

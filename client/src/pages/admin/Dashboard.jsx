@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from '../../components/Sidebar';
 import Header from '../../components/Header';
+import API_BASE_URL from '../../config/api';
 
 const Dashboard = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const API_BASE_URL = 'http://localhost:5050/api';
 
   useEffect(() => {
     const fetchEvents = async () => {
